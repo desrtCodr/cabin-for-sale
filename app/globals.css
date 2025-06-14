@@ -1,8 +1,42 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary Colors - Desert Rock Theme */
+  --color-primary: #9c4221; /* earthy red rock */
+  --color-primary-hover: #7c3415; /* darker earthy red */
+  --color-primary-light: #b45309; /* warm desert rock */
+  --color-primary-dark: #78350f; /* shadowed desert rock */
+
+  /* Background Colors - Desert Theme */
+  --color-bg-dark: #2d1810; /* deep desert brown */
+  --color-bg-dark-transparent: rgba(45, 24, 16, 0.95); /* desert brown with transparency */
+  --color-bg-darker: #1a0f0a; /* darker desert brown */
+  --color-bg-darkest: #0a0503; /* darkest desert brown */
+  --color-bg-input: #3d2318; /* lighter desert brown */
+
+  /* Accent Colors - Desert Elements */
+  --color-accent-sky: #4a5568; /* muted sky blue */
+  --color-accent-juniper: #2f5233; /* juniper green */
+  --color-accent-sand: #c05621; /* desert sand */
+  --color-accent-sage: #718096; /* sage brush */
+
+  /* Text Colors */
+  --color-text-light: #ffffff;
+  --color-text-muted: #e2e8f0; /* light sage */
+  --color-text-muted-dark: #a0aec0; /* medium sage */
+  --color-text-muted-darker: #718096; /* dark sage */
+
+  /* Border Colors */
+  --color-border-light: rgba(255, 255, 255, 0.1);
+
+  /* Gradient Colors */
+  --gradient-primary-from: #9c4221; /* earthy red rock */
+  --gradient-primary-to: #b45309; /* warm desert rock */
+  --gradient-bg-from: var(--color-bg-dark);
+  --gradient-bg-via: var(--color-bg-darker);
+  --gradient-bg-to: var(--color-bg-darkest);
+  --gradient-sky: linear-gradient(to bottom, var(--color-accent-sky), var(--color-bg-dark));
+  --gradient-desert: linear-gradient(to right, var(--color-accent-sand), var(--color-primary));
 }
 
 @theme inline {
