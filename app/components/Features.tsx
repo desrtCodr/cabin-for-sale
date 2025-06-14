@@ -32,9 +32,9 @@ export default function Features() {
             },
             {
               icon: <Home className="w-8 h-8 text-[var(--color-text-light)]" />,
-              title: 'Full Kitchen',
+              title: 'Kitchenette',
               description:
-                'Kitchen counter with sink and propane stove top. Prepare meals while enjoying panoramic mountain views.',
+                'Kitchenette with sink, small fridge, propane stove top, microwave, and coffee maker. No running water.',
             },
             {
               icon: <Heart className="w-8 h-8 text-[var(--color-text-light)]" />,
@@ -44,7 +44,8 @@ export default function Features() {
             {
               icon: <Eye className="w-8 h-8 text-[var(--color-text-light)]" />,
               title: 'Panoramic Views',
-              description: 'Wake up to breathtaking views of the La Sal Mountains from your private 10-acre sanctuary.',
+              description:
+                'Wake up to breathtaking views of the La Sal Mountains from your private 10-acre sanctuary. Picture windows on all sides allowing for 360 degree views.',
             },
             {
               icon: <Moon className="w-8 h-8 text-[var(--color-text-light)]" />,
