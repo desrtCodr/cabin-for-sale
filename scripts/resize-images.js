@@ -11,29 +11,46 @@ const HERO_QUALITY = 85
 async function resizeImages() {
   try {
     // Process gallery images
-    const files = fs.readdirSync(GALLERY_DIR)
-    for (const file of files) {
-      if (file.match(/\.(jpg|jpeg|png)$/i)) {
-        console.log(`Processing gallery image ${file}...`)
-        const inputPath = path.join(GALLERY_DIR, file)
-        const tempPath = path.join(GALLERY_DIR, `temp-${file}`)
+    const galleryFiles = fs
+      .readdirSync(GALLERY_DIR)
+      .filter((file) => file.match(/\.(jpg|jpeg|png)$/i))
+      .sort()
 
-        await sharp(inputPath)
-          .rotate() // This will automatically rotate based on EXIF orientation
-          .resize(MAX_WIDTH, null, {
-            withoutEnlargement: true,
-            fit: 'inside',
-          })
-          .jpeg({ quality: QUALITY })
-          .toFile(tempPath)
-
-        // Replace original with processed version
-        fs.unlinkSync(inputPath)
-        fs.renameSync(tempPath, inputPath)
-
-        console.log(`✓ Resized ${file}`)
-      }
+    // Create a temporary directory for processed gallery images
+    const galleryTempDir = path.join(GALLERY_DIR, 'temp')
+    if (!fs.existsSync(galleryTempDir)) {
+      fs.mkdirSync(galleryTempDir)
     }
+
+    // Process each gallery image
+    for (let i = 0; i < galleryFiles.length; i++) {
+      const file = galleryFiles[i]
+      const newName = `gallery-${String(i + 1).padStart(2, '0')}.jpg`
+      console.log(`Processing gallery image ${file} -> ${newName}...`)
+
+      const inputPath = path.join(GALLERY_DIR, file)
+      const outputPath = path.join(galleryTempDir, newName)
+
+      await sharp(inputPath)
+        .rotate()
+        .resize(MAX_WIDTH, null, {
+          withoutEnlargement: true,
+          fit: 'inside',
+        })
+        .jpeg({ quality: QUALITY })
+        .toFile(outputPath)
+
+      console.log(`✓ Resized ${newName}`)
+    }
+
+    // Move processed gallery files back to gallery directory
+    const processedGalleryFiles = fs.readdirSync(galleryTempDir)
+    for (const file of processedGalleryFiles) {
+      fs.renameSync(path.join(galleryTempDir, file), path.join(GALLERY_DIR, file))
+    }
+
+    // Remove gallery temp directory
+    fs.rmdirSync(galleryTempDir)
 
     // Process hero image
     const heroImage = 'cabin1.JPG'
@@ -58,7 +75,7 @@ async function resizeImages() {
       console.log(`✓ Resized hero image`)
     }
 
-    console.log('All images processed successfully!')
+    console.log('All gallery images processed and renamed successfully!')
   } catch (error) {
     console.error('Error processing images:', error)
   }

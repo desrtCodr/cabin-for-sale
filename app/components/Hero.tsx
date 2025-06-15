@@ -28,8 +28,10 @@ export default function Hero() {
           Desert Getaway
         </h1>
         <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto leading-relaxed">
-          Escape to a unique octagon cabin nestled on 10 private acres in the foothills of Utah&apos;s Abajo Mountains.
-          Complete off-grid serenity with stunning La Sal Mountain views.
+          Purchase your dream octagon cabin on 20 private acres, featuring solar power and stunning desert and mountain
+          views. Nestled in Utah&apos;s Abajo foothills, enjoy off-grid solitude with serene wilderness at your
+          doorstep.{' '}
+          <span className="text-2xl font-bold">Perfect for group getaways and ready for Airbnb opportunities.</span>
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
