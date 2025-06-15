@@ -1,5 +1,5 @@
 export type Feature = {
-  iconName: 'mountain' | 'home' | 'sun' | 'flame' | 'compass' | 'trees' | 'utensils' | 'car'
+  iconName: 'mountain' | 'home' | 'sun' | 'flame' | 'compass' | 'trees' | 'utensils' | 'car' | 'bed'
   title: string
   description: string
 }
