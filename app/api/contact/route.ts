@@ -17,7 +17,7 @@ export async function POST(request: Request) {
       from: 'onboarding@resend.dev',
       to: ['steph@stephdavis.co'],
       subject: `New Cabin Inquiry from ${name}`,
-      reply_to: email,
+      replyTo: email,
       text: `
 Name: ${name}
 Email: ${email}
